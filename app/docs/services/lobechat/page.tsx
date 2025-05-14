@@ -1,97 +1,114 @@
-import type { Metadata } from "next"
+"use client"
 
-export const metadata: Metadata = {
-  title: "LobeChat | Ethan Club Docs",
-  description: "Documentation for the LobeChat service",
-}
+import { useLanguage } from "@/contexts/language-context"
+import Image from "next/image"
 
 export default function LobeChatPage() {
+  const { language } = useLanguage()
+
   return (
     <div className="max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-navy-800 dark:text-pink-200">LobeChat</h1>
 
       <div className="prose prose-gray dark:prose-invert max-w-none">
-        <p className="lead">
-          LobeChat is an AI chat service that provides advanced conversational capabilities powered by large language
-          models.
-        </p>
+        {language === "en" ? (
+          // English content - simplified
+          <>
+            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/ai-chat-interface.png"
+                alt="LobeChat Interface"
+                width={600}
+                height={300}
+                className="w-full object-cover"
+              />
+            </div>
 
-        <h2>Overview</h2>
-        <p>
-          LobeChat allows you to interact with state-of-the-art AI models through a simple and intuitive interface. It
-          supports various features including:
-        </p>
-        <ul>
-          <li>Multi-turn conversations</li>
-          <li>Context awareness</li>
-          <li>File and image processing</li>
-          <li>Custom knowledge bases</li>
-          <li>Conversation history</li>
-        </ul>
+            <p className="lead">
+              LobeChat is an AI assistant that helps you with everyday tasks through natural conversation.
+            </p>
 
-        <h2>Getting Started</h2>
-        <p>
-          To start using LobeChat, simply access it from your dashboard after logging in. No additional setup is
-          required as the service runs in your browser.
-        </p>
+            <h2>What You Can Do With LobeChat</h2>
+            <ul>
+              <li>Ask questions and get instant answers</li>
+              <li>Generate creative content like stories and poems</li>
+              <li>Get help with writing emails and messages</li>
+              <li>Brainstorm ideas for projects and presentations</li>
+              <li>Learn about various topics through conversation</li>
+            </ul>
 
-        <h2>Features</h2>
+            <h2>How to Use LobeChat</h2>
+            <p>
+              Using LobeChat is simple! Just type your question or request in the chat box and press enter. The AI will
+              respond to you in a conversational manner. You can have back-and-forth conversations just like you would
+              with a human assistant.
+            </p>
 
-        <h3>Conversation Modes</h3>
-        <p>LobeChat offers different conversation modes optimized for various use cases:</p>
-        <ul>
-          <li>
-            <strong>Chat Mode:</strong> General-purpose conversation
-          </li>
-          <li>
-            <strong>Creative Mode:</strong> Enhanced creativity for brainstorming and content creation
-          </li>
-          <li>
-            <strong>Precise Mode:</strong> Focused on accuracy and factual responses
-          </li>
-        </ul>
+            <div className="bg-blue-50 dark:bg-navy-800 p-4 rounded-md my-6">
+              <h3 className="text-blue-700 dark:text-blue-300 mt-0">Pro Tip</h3>
+              <p className="mb-0">
+                For best results, be specific with your requests. Instead of asking "Tell me about books," try
+                "Recommend fantasy books for a 12-year-old who enjoys Harry Potter."
+              </p>
+            </div>
 
-        <h3>File Handling</h3>
-        <p>You can upload and process various file types including:</p>
-        <ul>
-          <li>Text documents (.txt, .md, .pdf)</li>
-          <li>Images (.jpg, .png, .webp)</li>
-          <li>Code files (.js, .py, .java, etc.)</li>
-        </ul>
+            <h2>Examples of What You Can Ask</h2>
+            <ul>
+              <li>"Can you help me draft an email to reschedule a meeting?"</li>
+              <li>"I need ideas for a birthday gift for my mom who loves gardening."</li>
+              <li>"Explain quantum computing in simple terms."</li>
+              <li>"Write a short poem about autumn leaves."</li>
+              <li>"Help me plan a 7-day itinerary for Tokyo."</li>
+            </ul>
+          </>
+        ) : (
+          // Chinese content - simplified
+          <>
+            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/ai-chat-interface.png"
+                alt="LobeChat 界面"
+                width={600}
+                height={300}
+                className="w-full object-cover"
+              />
+            </div>
 
-        <h2>API Integration</h2>
-        <p>
-          For developers who want to integrate LobeChat into their applications, we provide a comprehensive API. See the
-          API Reference section for detailed documentation.
-        </p>
+            <p className="lead">LobeChat 是一个人工智能助手，通过自然对话帮助您完成日常任务。</p>
 
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md my-6">
-          <p className="text-sm font-mono">
-            // Example API usage
-            <br />
-            &nbsp;&nbsp;message: "Tell me about artificial intelligence",
-            <br />
-            &nbsp;&nbsp;mode: "precise"
-            <br />
-          </p>
-        </div>
+            <h2>您可以用 LobeChat 做什么</h2>
+            <ul>
+              <li>提问并获得即时答案</li>
+              <li>生成创意内容，如故事和诗歌</li>
+              <li>获取撰写电子邮件和消息的帮助</li>
+              <li>为项目和演示文稿集思广益</li>
+              <li>通过对话学习各种主题</li>
+            </ul>
 
-        <h2>Limitations</h2>
-        <p>Please be aware of the following limitations when using LobeChat:</p>
-        <ul>
-          <li>Maximum context length of 100,000 tokens</li>
-          <li>File upload size limit of 10MB</li>
-          <li>Rate limits of 100 requests per minute</li>
-        </ul>
+            <h2>如何使用 LobeChat</h2>
+            <p>
+              使用 LobeChat 非常简单！只需在聊天框中输入您的问题或请求，然后按回车键。 AI
+              将以对话方式回应您。您可以像与人类助手一样进行来回对话。
+            </p>
 
-        <h2>Support</h2>
-        <p>
-          If you encounter any issues or have questions about LobeChat, please contact our support team at{" "}
-          <a href="mailto:ethan@hanlife02.com" className="text-pink-600 dark:text-pink-400 hover:underline">
-            ethan@hanlife02.com
-          </a>
-          .
-        </p>
+            <div className="bg-blue-50 dark:bg-navy-800 p-4 rounded-md my-6">
+              <h3 className="text-blue-700 dark:text-blue-300 mt-0">专业提示</h3>
+              <p className="mb-0">
+                为了获得最佳结果，请具体说明您的请求。不要问"告诉我关于书籍的信息"，
+                而是尝试"为喜欢哈利波特的12岁孩子推荐奇幻书籍"。
+              </p>
+            </div>
+
+            <h2>您可以询问的示例</h2>
+            <ul>
+              <li>"你能帮我起草一封重新安排会议的电子邮件吗？"</li>
+              <li>"我需要为喜欢园艺的妈妈准备生日礼物的想法。"</li>
+              <li>"用简单的术语解释量子计算。"</li>
+              <li>"写一首关于秋叶的短诗。"</li>
+              <li>"帮我规划一个7天的东京行程。"</li>
+            </ul>
+          </>
+        )}
       </div>
     </div>
   )

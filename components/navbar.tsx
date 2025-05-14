@@ -17,13 +17,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { LogOut, User } from "lucide-react"
+import { LogOut, User, Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 export function Navbar() {
   const { isAuthenticated, user, logout } = useAuth()
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +34,10 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
 
   return (
     <motion.header
@@ -52,7 +57,24 @@ export function Navbar() {
             <span className="font-bold text-xl text-navy-800 dark:text-pink-200">Ethan Club</span>
           </Link>
 
-          {/* Navigation Links */}
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden ml-4 p-2 text-navy-600 hover:text-navy-800 dark:text-pink-100 dark:hover:text-pink-200"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <motion.div initial={{ rotate: 0 }} animate={{ rotate: 90 }} transition={{ duration: 0.2 }}>
+                <X className="h-6 w-6" />
+              </motion.div>
+            ) : (
+              <motion.div initial={{ rotate: 90 }} animate={{ rotate: 0 }} transition={{ duration: 0.2 }}>
+                <Menu className="h-6 w-6" />
+              </motion.div>
+            )}
+          </button>
+
+          {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center ml-8 space-x-6">
             <NavLink href="/" active={pathname === "/"}>
               Home
@@ -104,6 +126,29 @@ export function Navbar() {
           )}
         </div>
       </div>
+      {/* Mobile menu dropdown */}
+      <motion.div
+        className={`md:hidden w-full absolute top-16 left-0 z-50 bg-white dark:bg-navy-950 shadow-md`}
+        initial={{ opacity: 0, height: 0 }}
+        animate={{
+          opacity: mobileMenuOpen ? 1 : 0,
+          height: mobileMenuOpen ? "auto" : 0,
+        }}
+        transition={{ duration: 0.3 }}
+        style={{ overflow: "hidden" }}
+      >
+        <div className="px-4 py-3 space-y-1 border-t border-gray-200 dark:border-gray-800">
+          <MobileNavLink href="/" active={pathname === "/"}>
+            Home
+          </MobileNavLink>
+          <MobileNavLink href="/dashboard" active={pathname === "/dashboard"}>
+            Dashboard
+          </MobileNavLink>
+          <MobileNavLink href="/docs" active={pathname.startsWith("/docs")}>
+            Docs
+          </MobileNavLink>
+        </div>
+      </motion.div>
     </motion.header>
   )
 }
@@ -127,6 +172,22 @@ function NavLink({ href, active, children }: { href: string; active: boolean; ch
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />
       )}
+    </Link>
+  )
+}
+
+// Helper component for mobile navigation links
+function MobileNavLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className={`block py-2 px-3 rounded-md ${
+        active
+          ? "bg-navy-100 text-navy-800 dark:bg-navy-800 dark:text-pink-200"
+          : "text-navy-600 hover:bg-navy-50 dark:text-pink-100 dark:hover:bg-navy-900"
+      }`}
+    >
+      {children}
     </Link>
   )
 }

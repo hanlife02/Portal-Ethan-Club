@@ -31,14 +31,14 @@ export function Hero() {
         <div className="absolute inset-0 bg-[url('/grid-pattern.png')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12 py-20 relative z-10">
         <motion.div
           className="flex flex-col md:flex-row items-center justify-between gap-12"
           variants={container}
           initial="hidden"
           animate="show"
         >
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 text-center md:text-left md:pl-4">
             <motion.h1 className="text-4xl md:text-6xl font-bold text-navy-800 dark:text-pink-200 mb-6" variants={item}>
               Welcome to
               <br />

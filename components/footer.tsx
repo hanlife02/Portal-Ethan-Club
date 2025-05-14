@@ -17,7 +17,8 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-navy-800 dark:text-pink-200">Ethan Club</h3>
             <p className="text-navy-600 dark:text-pink-100 text-sm">
-              Your gateway to a world of exclusive services and resources.
+              We are very honored that 
+              you have joined Ethan Club.
             </p>
           </div>
 

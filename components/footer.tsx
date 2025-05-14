@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Mail } from "lucide-react"
+import { Mail, Activity } from "lucide-react"
 
 export function Footer() {
   return (
@@ -17,8 +17,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-navy-800 dark:text-pink-200">Ethan Club</h3>
             <p className="text-navy-600 dark:text-pink-100 text-sm">
-              We are very honored that 
-              you have joined Ethan Club.
+              We are very honored that you have joined Ethan Club.
             </p>
           </div>
 
@@ -61,6 +60,17 @@ export function Footer() {
                   className="text-navy-600 hover:text-navy-800 dark:text-pink-100 dark:hover:text-pink-300"
                 >
                   About Me
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://status.ethan02.com/status/all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-navy-600 hover:text-navy-800 dark:text-pink-100 dark:hover:text-pink-300 flex items-center"
+                >
+                  <Activity className="h-3.5 w-3.5 mr-1" />
+                  Monitor
                 </a>
               </li>
               <li>

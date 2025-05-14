@@ -1,7 +1,6 @@
 "use client"
 
 import { useLanguage } from "@/contexts/language-context"
-import Image from "next/image"
 
 export default function NewAPIPage() {
   const { language } = useLanguage()
@@ -14,16 +13,6 @@ export default function NewAPIPage() {
         {language === "en" ? (
           // English content - simplified
           <>
-            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/placeholder.svg?key=l8war"
-                alt="NewAPI Interface"
-                width={600}
-                height={300}
-                className="w-full object-cover"
-              />
-            </div>
-
             <p className="lead">
               NewAPI is a powerful tool that helps you access and process information from various sources.
             </p>
@@ -78,16 +67,6 @@ export default function NewAPIPage() {
         ) : (
           // Chinese content - simplified
           <>
-            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/placeholder.svg?key=1dwlz"
-                alt="NewAPI 界面"
-                width={600}
-                height={300}
-                className="w-full object-cover"
-              />
-            </div>
-
             <p className="lead">NewAPI 是一个强大的工具，可帮助您访问和处理来自各种来源的信息。</p>
 
             <h2>您可以用 NewAPI 做什么</h2>

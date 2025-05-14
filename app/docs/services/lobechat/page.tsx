@@ -1,7 +1,6 @@
 "use client"
 
 import { useLanguage } from "@/contexts/language-context"
-import Image from "next/image"
 
 export default function LobeChatPage() {
   const { language } = useLanguage()
@@ -14,16 +13,6 @@ export default function LobeChatPage() {
         {language === "en" ? (
           // English content - simplified
           <>
-            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/ai-chat-interface.png"
-                alt="LobeChat Interface"
-                width={600}
-                height={300}
-                className="w-full object-cover"
-              />
-            </div>
-
             <p className="lead">
               LobeChat is an AI assistant that helps you with everyday tasks through natural conversation.
             </p>
@@ -64,16 +53,6 @@ export default function LobeChatPage() {
         ) : (
           // Chinese content - simplified
           <>
-            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/ai-chat-interface.png"
-                alt="LobeChat 界面"
-                width={600}
-                height={300}
-                className="w-full object-cover"
-              />
-            </div>
-
             <p className="lead">LobeChat 是一个人工智能助手，通过自然对话帮助您完成日常任务。</p>
 
             <h2>您可以用 LobeChat 做什么</h2>

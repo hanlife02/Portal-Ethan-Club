@@ -9,9 +9,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  serverOptions: {
-    port: 8654
-  },
+  // 移除了无效的 serverOptions 配置
 }
 
 export default nextConfig

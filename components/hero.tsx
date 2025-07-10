@@ -71,9 +71,9 @@ export function Hero() {
                 fill
                 className="object-contain rounded-full shadow-lg"
                 priority
-                onLoadingComplete={(img) => {
+                onLoad={(img) => {
                   // Optional: Add animation when image loads
-                  img.classList.add("transition-opacity", "duration-700", "opacity-100")
+                  img.currentTarget.classList.add("transition-opacity", "duration-700", "opacity-100")
                 }}
               />
             </div>

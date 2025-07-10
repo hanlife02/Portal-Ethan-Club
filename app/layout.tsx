@@ -10,7 +10,12 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Ethan Club",
   description: "Your gateway to Ethan Club services",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({

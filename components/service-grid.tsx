@@ -48,8 +48,10 @@ export function ServiceGrid({ isAdmin = false }: ServiceGridProps) {
     const loadServices = async () => {
       try {
         const data = await fetchServices()
+        console.log("Fetched services:", data)
         setServices(data)
       } catch (error) {
+        console.error("Error loading services:", error)
         toast({
           title: "Error",
           description: "Failed to load services",
@@ -180,19 +182,39 @@ export function ServiceGrid({ isAdmin = false }: ServiceGridProps) {
 
   // Function to render the appropriate icon for each service
   const renderServiceIcon = (service: Service) => {
-    if (service.id === "lobechat" || service.icon === "chat-icon") {
+    console.log("Rendering icon for service:", service.name, "with icon:", service.icon)
+    
+    // Check if icon is a direct image file name (e.g., "treehole.png")
+    if (service.icon && (service.icon.endsWith('.png') || service.icon.endsWith('.jpg') || service.icon.endsWith('.jpeg') || service.icon.endsWith('.webp') || service.icon.endsWith('.svg'))) {
+      console.log("Using direct image file:", service.icon)
+      return (
+        <div className="relative w-16 h-16">
+          <Image 
+            src={`/${service.icon}`} 
+            alt={service.name} 
+            fill 
+            className="object-contain"
+          />
+        </div>
+      )
+    }
+    // Legacy icon handling for backwards compatibility
+    else if (service.id === "lobechat" || service.icon === "chat-icon") {
+      console.log("Using lobechat icon")
       return (
         <div className="relative w-16 h-16">
           <Image src="/lobe-icon.webp" alt="LobeChat" fill className="object-contain" />
         </div>
       )
     } else if (service.id === "newapi" || service.icon === "api-icon") {
+      console.log("Using newapi icon")
       return (
         <div className="relative w-16 h-16">
           <Image src="/newapi-logo.png" alt="NewAPI" fill className="object-contain" />
         </div>
       )
     } else {
+      console.log("Using default icon")
       // Default icon for other services
       return <div className="text-4xl">🔧</div>
     }
@@ -290,9 +312,12 @@ export function ServiceGrid({ isAdmin = false }: ServiceGridProps) {
                     <Input
                       id="icon"
                       name="icon"
-                      placeholder="icon-name"
+                      placeholder="e.g., treehole.png or chat-icon"
                       defaultValue={editingService?.icon || "default-icon"}
                     />
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      Use image filename (e.g., treehole.png) or predefined icon (chat-icon, api-icon)
+                    </p>
                   </div>
 
                   <DialogFooter className="mt-4">
